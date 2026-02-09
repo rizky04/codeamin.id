@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Portfolio | Modern & Sleek</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg: #050505;
+            --accent: #00f2ff;
+            --glass: rgba(255, 255, 255, 0.03);
+            --text: #ffffff;
+            --secondary: #888888;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            cursor: none; /* Custom cursor handling */
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- CUSTOM CURSOR --- */
+        #cursor {
+            width: 20px;
+            height: 20px;
+            background: var(--accent);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            mix-blend-mode: difference;
+            transition: transform 0.1s ease;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 10%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .logo { font-weight: 900; font-size: 1.5rem; letter-spacing: -1px; }
+        nav ul { display: flex; list-style: none; gap: 30px; }
+        nav ul li a { color: var(--text); text-decoration: none; font-size: 0.9rem; opacity: 0.7; transition: 0.3s; }
+        nav ul li a:hover { opacity: 1; color: var(--accent); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 10%;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(90deg, #00f2ff, #0072ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            max-width: 600px;
+        }
+
+        /* --- PROJECTS SECTION (BENTO GRID) --- */
+        .projects-section {
+            padding: 100px 10%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 50px;
+            text-align: center;
+        }
+
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-auto-rows: 300px;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--glass);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: 0.5s ease;
+        }
+
+        .card:hover {
+            border-color: var(--accent);
+            transform: scale(1.02);
+            background: rgba(255, 255, 255, 0.07);
+        }
+
+        /* Bento Variasi Ukuran */
+        .card.large { grid-column: span 2; }
+        .card.tall { grid-row: span 2; }
+
+        .card h3 { font-size: 1.5rem; margin-bottom: 10px; }
+        .card p { color: var(--secondary); font-size: 0.9rem; }
+
+        /* Glow Effect */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(0, 242, 255, 0.1) 0%, transparent 70%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .card:hover::before { opacity: 1; }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: 1fr 1fr; }
+            .card.large { grid-column: span 1; }
+        }
+        @media (max-width: 600px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .card.tall { grid-row: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+
+    <nav>
+        <div class="logo">PORTFOLIO.</div>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Work</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <h1 class="reveal">Code Meets <span>Creativity.</span></h1>
+        <p class="reveal">Saya seorang Full-stack Developer yang fokus pada performa tinggi dan desain interaktif yang modern.</p>
+    </section>
+
+    <section class="projects-section">
+        <h2 class="section-title reveal">Selected Work</h2>
+        <div class="bento-grid">
+            <div class="card large reveal">
+                <h3>E-Commerce Dashboard</h3>
+                <p>Membangun sistem analitik real-time dengan React & Node.js.</p>
+            </div>
+            <div class="card reveal">
+                <h3>AI Chatbot</h3>
+                <p>Integrasi OpenAI API untuk asisten virtual.</p>
+            </div>
+            <div class="card tall reveal">
+                <h3>Mobile Banking App</h3>
+                <p>UI/UX Design & Flutter Development.</p>
+            </div>
+            <div class="card reveal">
+                <h3>Portfolio 3D</h3>
+                <p>Eksperimen Three.js dan WebGL.</p>
+            </div>
+            <div class="card large reveal">
+                <h3>SaaS Platform</h3>
+                <p>Optimasi database dan manajemen user berskala besar.</p>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <script>
+        // 1. Custom Cursor Movement
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, {
+                x: e.clientX - 10,
+                y: e.clientY - 10,
+                duration: 0.2,
+                ease: "power2.out"
+            });
+        });
+
+        // 2. Initial Hero Animation
+        gsap.from(".hero h1", {
+            y: 50,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power4.out"
+        });
+
+        gsap.from(".hero p", {
+            y: 30,
+            opacity: 0,
+            duration: 1.5,
+            delay: 0.3,
+            ease: "power4.out"
+        });
+
+        // 3. Scroll Reveal for Cards
+        gsap.registerPlugin(ScrollTrigger);
+
+        const cards = document.querySelectorAll('.card');
+        cards.forEach((card, index) => {
+            gsap.from(card, {
+                scrollTrigger: {
+                    trigger: card,
+                    start: "top bottom-=100px",
+                },
+                y: 60,
+                opacity: 0,
+                duration: 0.8,
+                delay: index * 0.1,
+                ease: "power2.out"
+            });
+        });
+
+        // 4. Hover effect on Cursor
+        const links = document.querySelectorAll('a, .card');
+        links.forEach(link => {
+            link.addEventListener('mouseenter', () => {
+                gsap.to(cursor, { scale: 3, backgroundColor: "rgba(0, 242, 255, 0.3)" });
+            });
+            link.addEventListener('mouseleave', () => {
+                gsap.to(cursor, { scale: 1, backgroundColor: "#00f2ff" });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amin | Fullstack Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        :root {
+            --bg: #030303;
+            --accent: #00ffcc;
+            --card-bg: rgba(255, 255, 255, 0.03);
+            --text-main: #ffffff;
+            --text-dim: #a0a0a0;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* CUSTOM CURSOR */
+        #cursor {
+            width: 15px; height: 15px; background: var(--accent);
+            border-radius: 50%; position: fixed; pointer-events: none;
+            z-index: 9999; mix-blend-mode: difference;
+        }
+
+        /* NAVIGATION */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 25px 8%;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 1000; background: rgba(3,3,3,0.8); backdrop-filter: blur(10px);
+        }
+        .logo { font-weight: 800; font-size: 1.4rem; color: var(--accent); }
+
+        /* HERO SECTION */
+        .hero {
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+        }
+        .hero h1 { font-size: clamp(3rem, 10vw, 7rem); font-weight: 800; line-height: 0.9; }
+        .hero h1 span { color: var(--accent); -webkit-text-stroke: 1px var(--accent); -webkit-text-fill-color: transparent; }
+        .hero p { margin-top: 20px; color: var(--text-dim); font-size: 1.2rem; max-width: 600px; }
+
+        /* PROJECT BENTO GRID */
+        .work-container { padding: 100px 8%; }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-auto-rows: 200px;
+            gap: 20px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 30px;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover { border-color: var(--accent); background: rgba(255, 255, 255, 0.08); }
+        .card h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .card p { color: var(--text-dim); font-size: 0.9rem; }
+        .card .tag { 
+            position: absolute; top: 20px; right: 20px; 
+            background: var(--accent); color: #000; 
+            padding: 5px 15px; border-radius: 20px; font-size: 0.7rem; font-weight: 700;
+        }
+
+        /* Grid Sizes */
+        .item-1 { grid-column: span 8; grid-row: span 2; }
+        .item-2 { grid-column: span 4; grid-row: span 2; }
+        .item-3 { grid-column: span 4; grid-row: span 2; }
+        .item-4 { grid-column: span 8; grid-row: span 2; }
+
+        /* CTA SECTION */
+        .footer { padding: 100px 8%; text-align: center; }
+        .btn {
+            display: inline-block; padding: 20px 40px;
+            border: 1px solid var(--accent); color: var(--accent);
+            text-decoration: none; border-radius: 50px;
+            font-weight: 700; transition: 0.3s;
+        }
+        .btn:hover { background: var(--accent); color: #000; }
+
+        @media (max-width: 768px) {
+            .grid { display: flex; flex-direction: column; }
+            .card { min-height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="cursor"></div>
+
+    <nav>
+        <div class="logo">AMIN.CODES</div>
+        <div class="nav-links">Available for Work</div>
+    </nav>
+
+    <section class="hero">
+        <h1 class="reveal">AMINDRA<br><span>PROJECTS</span></h1>
+        <p class="reveal">Seorang Web Developer yang mengubah logika menjadi antarmuka yang estetik dan fungsional.</p>
+    </section>
+
+    <section class="work-container">
+        <div class="grid">
+            <div class="card item-1 reveal">
+                <span class="tag">WEB APP</span>
+                <h3>Puskesmas Digital</h3>
+                <p>Sistem manajemen data pasien dan layanan kesehatan terintegrasi untuk efisiensi birokrasi.</p>
+            </div>
+
+            <div class="card item-2 reveal">
+                <span class="tag">IOT / WEB</span>
+                <h3>Monitoring Ikan</h3>
+                <p>Dashboard pemantauan kondisi air dan pakan ikan secara real-time.</p>
+            </div>
+
+            <div class="card item-3 reveal">
+                <span class="tag">SECURITY</span>
+                <h3>Sistem Login Multi-role</h3>
+                <p>Implementasi keamanan tingkat tinggi dengan manajemen akses user yang ketat.</p>
+            </div>
+
+            <div class="card item-4 reveal">
+                <span class="tag">REAL-TIME</span>
+                <h3>Private Chat App</h3>
+                <p>Aplikasi pesan instan dengan protokol WebSockets untuk komunikasi tanpa delay.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer reveal">
+        <h2>Tertarik bekerjasama?</h2>
+        <br><br>
+        <a href="https://wa.me/your-number" class="btn">HUBUNGI SAYA</a>
+    </footer>
+
+    <script>
+        // 1. Smooth Cursor
+        const cursor = document.querySelector('#cursor');
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0.4, ease: "power2.out" });
+        });
+
+        // 2. Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Animation
+        gsap.from(".hero h1", { y: 100, opacity: 0, duration: 1.5, ease: "power4.out" });
+        gsap.from(".hero p", { y: 50, opacity: 0, duration: 1.5, delay: 0.3, ease: "power4.out" });
+
+        // Scroll Animation for Cards
+        const reveals = document.querySelectorAll('.reveal');
+        reveals.forEach(el => {
+            gsap.from(el, {
+                scrollTrigger: {
+                    trigger: el,
+                    start: "top 85%",
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // Hover Effect on Cards
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                gsap.to(cursor, { scale: 4, backgroundColor: "rgba(0, 255, 204, 0.2)" });
+            });
+            card.addEventListener('mouseleave', () => {
+                gsap.to(cursor, { scale: 1, backgroundColor: "#00ffcc" });
+            });
+        });
+    </script>
+</body>
+</html>

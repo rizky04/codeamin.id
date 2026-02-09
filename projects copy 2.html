@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Archive | Codeamin.id</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --bg: #050505;
+            --accent: #00f2ff;
+            --text: #ffffff;
+            --secondary: #d1d1d1; /* Lebih terang ke arah putih */
+            --glass: rgba(255, 255, 255, 0.12); /* Menaikkan opacity agar card lebih 'nyata' */
+            --glass-border: rgba(255, 255, 255, 0.25); /* Border lebih kontras */
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; cursor: none; }
+        body { 
+            background-color: var(--bg); 
+            color: var(--text); 
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-image: radial-gradient(circle at 50% -20%, #003a40 0%, transparent 50%); /* Subtle glow di atas */
+        }
+
+        #cursor {
+            width: 15px; height: 15px; background: var(--accent);
+            border-radius: 50%; position: fixed; pointer-events: none;
+            z-index: 10000; mix-blend-mode: difference;
+            box-shadow: 0 0 20px var(--accent);
+        }
+
+        nav { padding: 30px 8%; display: flex; justify-content: space-between; align-items: center; }
+        .back-btn { color: var(--text); text-decoration: none; font-weight: 600; transition: 0.3s; font-size: 0.9rem; }
+        .back-btn:hover { color: var(--accent); }
+
+        .container { padding: 40px 8% 100px; max-width: 1400px; margin: 0 auto; }
+        h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 60px; text-align: center; letter-spacing: -2px; }
+        h1 span { color: var(--accent); text-shadow: 0 0 30px rgba(0, 242, 255, 0.3); }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 35px;
+        }
+
+        /* --- CARD SETTINGS (LEBIH TERANG) --- */
+        .archive-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 28px;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Shadow agar card naik */
+        }
+
+        .archive-card:hover { 
+            transform: translateY(-15px); 
+            border-color: var(--accent); 
+            background: rgba(255, 255, 255, 0.18); /* Makin terang saat hover */
+            box-shadow: 0 20px 40px rgba(0, 242, 255, 0.15); /* Neon glow halus */
+        }
+        
+        .archive-img { 
+            width: 100%; height: 220px; 
+            background: #111; 
+            overflow: hidden; 
+            border-bottom: 1px solid var(--glass-border);
+        }
+        
+        .archive-img img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            opacity: 1; /* Full opacity agar terang */
+            transition: 0.6s ease;
+        }
+        
+        .archive-card:hover .archive-img img { transform: scale(1.1); }
+        
+        .archive-info { padding: 30px; }
+        .archive-info h4 { 
+            font-size: 1.6rem; 
+            margin-bottom: 12px; 
+            color: #fff; 
+            font-weight: 800;
+        }
+        
+        .archive-info p { 
+            font-size: 1rem; 
+            color: var(--secondary); 
+            margin-bottom: 25px; 
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        
+        .archive-tag { 
+            font-size: 0.75rem; 
+            font-weight: 800; 
+            color: #000; 
+            background: var(--accent); /* Tag dibuat solid agar mencolok */
+            padding: 6px 16px; 
+            border-radius: 50px;
+            box-shadow: 0 0 15px rgba(0, 242, 255, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.8rem; }
+            .container { padding: 20px 5%; }
+        }
+    </style>
+</head>
+<body>
+    <div id="cursor"></div>
+
+    <nav>
+        <div class="logo" style="font-weight: 800; color: var(--accent); letter-spacing: -1px; font-size: 1.2rem;">CODEAMIN.ID</div>
+        <a href="index.html" class="back-btn"><i class="fas fa-arrow-left"></i> KEMBALI</a>
+    </nav>
+
+    <div class="container">
+        <h1 class="reveal">Project <span>Archive</span></h1>
+        
+        <div class="project-grid">
+            <div class="archive-card reveal">
+                <div class="archive-img">
+                    <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800" alt="Inventory">
+                </div>
+                <div class="archive-info">
+                    <h4>Warehouse System</h4>
+                    <p>Manajemen stok otomatis dengan fitur barcode scanner dan laporan bulanan PDF terintegrasi.</p>
+                    <span class="archive-tag">PHP LARAVEL</span>
+                </div>
+            </div>
+
+            <div class="archive-card reveal">
+                <div class="archive-img">
+                    <img src="https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=800" alt="Agency">
+                </div>
+                <div class="archive-info">
+                    <h4>Creative Agency</h4>
+                    <p>Website landing page interaktif dengan optimasi kecepatan dan animasi ScrollReveal.</p>
+                    <span class="archive-tag">JAVASCRIPT</span>
+                </div>
+            </div>
+
+            <div class="archive-card reveal">
+                <div class="archive-img">
+                    <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?q=80&w=800" alt="Payment">
+                </div>
+                <div class="archive-info">
+                    <h4>Payment Gateway</h4>
+                    <p>Integrasi sistem pembayaran otomatis menggunakan API Midtrans untuk e-ticketing.</p>
+                    <span class="archive-tag">NODE.JS API</span>
+                </div>
+            </div>
+
+            <div class="archive-card reveal">
+                <div class="archive-img">
+                    <img src="https://images.unsplash.com/photo-1551288049-bbbda5366392?q=80&w=800" alt="Dashboard">
+                </div>
+                <div class="archive-info">
+                    <h4>Data Analytics</h4>
+                    <p>Visualisasi data real-time untuk monitoring penjualan UMKM dengan chart interaktif.</p>
+                    <span class="archive-tag">VUE JS • D3.JS</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        const cursor = document.getElementById('cursor');
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX - 7, y: e.clientY - 7, duration: 0.2, ease: "power2.out" });
+        });
+
+        // Hover Effect
+        document.querySelectorAll('a, .archive-card').forEach(item => {
+            item.addEventListener('mouseenter', () => gsap.to(cursor, { scale: 4, backgroundColor: "rgba(0, 242, 255, 0.15)" }));
+            item.addEventListener('mouseleave', () => gsap.to(cursor, { scale: 1, backgroundColor: "#00f2ff" }));
+        });
+
+        // GSAP Reveal Animation
+        gsap.from(".reveal", { 
+            y: 50, 
+            opacity: 0, 
+            stagger: 0.15, 
+            duration: 1, 
+            ease: "power4.out" 
+        });
+    </script>
+</body>
+</html>
