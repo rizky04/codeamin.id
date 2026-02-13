@@ -6,7 +6,7 @@
     <title>All Projects | Codeamin.id</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --bg: #050505;
@@ -96,7 +96,7 @@
         .content-box .year { font-size: 0.75rem; color: var(--accent); font-weight: 600; margin-bottom: 10px; display: block; }
         .content-box h3 { font-size: 1.4rem; margin-bottom: 10px; }
         .content-box p { color: var(--secondary); font-size: 0.9rem; margin-bottom: 20px; }
-        
+
         .tech-stack { display: flex; gap: 10px; flex-wrap: wrap; }
         .tech-item { font-family: monospace; font-size: 0.7rem; opacity: 0.6; }
 
@@ -117,17 +117,17 @@
     <div id="cursor"></div>
 
     <nav>
-        <a href="index.html" class="logo">CODEAMIN.ID</a>
+        <a href="{{ route('home') }}" class="logo">CODEAMIN.ID</a>
         <div class="nav-links">
-            <a href="index.html" style="color: white; text-decoration: none; font-size: 0.9rem;">Back Home</a>
+            <a href="{{ route('home') }}" style="color: white; text-decoration: none; font-size: 0.9rem;">Back Home</a>
         </div>
     </nav>
 
     <header class="project-header">
-        <a href="index.html" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        <a href="{{ route('home') }}" class="btn-back"><i class="fas fa-arrow-left"></i> Back to Home</a>
         <h1 class="reveal">Showcasing All <span>Projects</span></h1>
         <p class="reveal" style="color: var(--secondary); max-width: 600px;">Kumpulan solusi digital yang saya kerjakan, mulai dari otomasi sistem hingga platform skala besar.</p>
-        
+
         <div class="filter-tags reveal">
             <div class="tag active">All Work</div>
             <div class="tag">Web App</div>
@@ -139,7 +139,7 @@
 
     <main class="projects-container">
         <div class="grid-layout">
-            
+
             <div class="project-card reveal">
                 <div class="image-box">
                     <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" alt="Dashboard">
@@ -284,7 +284,7 @@
 
         // Animations
         gsap.registerPlugin(ScrollTrigger);
-        
+
         document.querySelectorAll('.reveal').forEach((el, index) => {
             gsap.from(el, {
                 y: 30,

@@ -6,7 +6,7 @@
     <title>Codeamin.id | Fullstack Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --bg: #050505;
@@ -96,9 +96,9 @@
             color: var(--accent); z-index: 2001; transition: 0.3s;
         }
         .close-overlay:hover { transform: rotate(90deg); color: #fff; }
-        
+
         .overlay-content h2 { font-size: 3rem; margin-bottom: 50px; text-align: center; font-weight: 800; }
-        
+
         /* Grid in Overlay */
         .project-grid-full {
             display: grid;
@@ -116,7 +116,7 @@
             transition: 0.4s;
         }
         .archive-card:hover { transform: translateY(-10px); border-color: var(--accent); }
-        
+
         .archive-img {
             width: 100%;
             height: 180px;
@@ -127,7 +127,7 @@
             width: 100%; height: 100%; object-fit: cover; opacity: 0.6; transition: 0.5s;
         }
         .archive-card:hover .archive-img img { opacity: 1; transform: scale(1.1); }
-        
+
         .archive-info { padding: 25px; }
         .archive-info h4 { font-size: 1.3rem; margin-bottom: 10px; color: var(--accent); }
         .archive-info p { font-size: 0.9rem; color: var(--secondary); margin-bottom: 15px; }
@@ -136,7 +136,7 @@
         /* --- CONTACT --- */
         .contact-section { background: #080808; border-radius: 60px 60px 0 0; border-top: 1px solid var(--glass-border); }
         .social-icons { display: flex; gap: 15px; margin-bottom: 40px; justify-content: center; flex-wrap: wrap; }
-        .social-icons a { 
+        .social-icons a {
             width: 55px; height: 55px; border-radius: 50%; background: var(--glass);
             display: flex; align-items: center; justify-content: center;
             color: var(--text); font-size: 1.3rem; text-decoration: none; border: 1px solid var(--glass-border);
@@ -147,7 +147,7 @@
         .footer-content { text-align: center; }
         .email-link { font-size: clamp(1.2rem, 6vw, 4.5rem); font-weight: 800; text-decoration: none; color: var(--text); transition: 0.3s; letter-spacing: -2px; }
         .email-link:hover { color: var(--accent); }
-        
+
         .footer-bottom { margin-top: 80px; padding-top: 30px; border-top: 1px solid var(--glass-border); display: flex; justify-content: space-between; color: var(--secondary); font-size: 0.85rem; }
 
         @media (max-width: 900px) {
@@ -178,42 +178,52 @@
 
     <section id="work" class="section-padding">
         <h2 class="section-title reveal">Featured <span>Work</span></h2>
-        <div class="bento-grid">
-            <div class="card large reveal">
-                <span class="card-tag">SYSTEM</span>
-                <h3>Puskesmas Digital App</h3>
-                <p>Digitalisasi manajemen kesehatan pasca-pandemi dengan sistem cloud terintegrasi.</p>
-            </div>
-            <div class="card reveal">
-                <span class="card-tag">IOT</span>
-                <h3>Monitoring Ikan</h3>
-                <p>Sistem cerdas pemantau ekosistem air menggunakan Node.js dan sensor real-time.</p>
-            </div>
-            <div class="card reveal">
-                <span class="card-tag">SECURITY</span>
-                <h3>Multi-role Auth</h3>
-                <p>Arsitektur keamanan login tingkat lanjut untuk skala Enterprise.</p>
-            </div>
-            <div class="card large reveal">
-                <span class="card-tag">REAL-TIME</span>
-                <h3>Private Chat App</h3>
-                <p>Platform komunikasi terenkripsi menggunakan WebSockets untuk performa tinggi.</p>
-            </div>
+        {{-- <div class="bento-grid">
+    @foreach($data->take(4) as $index => $project)
+        <div class="card {{ $index == 0 || $index == 3 ? 'large' : '' }} reveal">
+            <span class="card-tag">{{ strtoupper($project->type) }}</span>
+            <h3>{{ $project->title }}</h3>
+            <p>{{ Str::limit($project->description, 80) }}</p>
+
+
+            <a href="{{ $project->link ?? '#' }}" target="_blank" style="position: absolute; inset: 0; z-index: 1;"></a>
         </div>
+    @endforeach
+</div> --}}
+<div class="bento-grid">
+    @foreach($data->take(4) as $index => $project)
+        <div class="card {{ $index == 0 || $index == 3 ? 'large' : '' }} reveal"
+             style="background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{{ asset('storage/' . $project->thumbnail) }}'); background-size: cover; background-position: center;">
+
+            <span class="card-tag">{{ strtoupper($project->type) }}</span>
+            <div style="position: relative; z-index: 2;">
+                <h3>{{ $project->title }}</h3>
+                <p>{{ \Illuminate\Support\Str::limit($project->description, 80) }}</p>
+            </div>
+
+            <a href="{{ $project->link ?? '#' }}" target="_blank" style="position: absolute; inset: 0; z-index: 1;"></a>
+        </div>
+    @endforeach
+</div>
+
+<div class="more-projects">
+    {{-- Arahkan ke route project anda --}}
+    <a href="{{ route('project') }}" class="view-all-btn reveal" style="text-decoration: none; display: inline-block;">VIEW ALL PROJECTS</a>
+</div>
 
         <!-- <div class="more-projects">
             <button class="view-all-btn reveal" id="btn-view-all">VIEW ALL PROJECTS</button>
         </div> -->
-        <div class="more-projects">
+        {{-- <div class="more-projects">
     <a href="projects.html" class="view-all-btn reveal" style="text-decoration: none; display: inline-block;">VIEW ALL PROJECTS</a>
-</div>
+</div> --}}
     </section>
 
     <div id="project-overlay">
         <a href="javascript:void(0)" class="close-overlay" id="btn-close-overlay"><i class="fas fa-times"></i></a>
         <div class="overlay-content">
             <h2>Project <span>Archive</span></h2>
-            
+
             <div class="project-grid-full">
                 <div class="archive-card">
                     <div class="archive-img">
@@ -274,7 +284,7 @@
                 <a href="https://wa.me/628123456789" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
                 <a href="https://linkedin.com/in/codeamin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>© 2026 Codeamin.id. All Rights Reserved.</p>
                 <p>Designed by Codeamin — Bangkalan, ID</p>
@@ -300,11 +310,11 @@
         btnViewAll.addEventListener('click', () => {
             overlay.style.display = 'block';
             gsap.to(overlay, { opacity: 1, duration: 0.5, ease: "power2.out" });
-            gsap.from(".archive-card", { 
-                y: 50, 
-                opacity: 0, 
-                stagger: 0.15, 
-                duration: 0.8, 
+            gsap.from(".archive-card", {
+                y: 50,
+                opacity: 0,
+                stagger: 0.15,
+                duration: 0.8,
                 delay: 0.2,
                 ease: "power4.out"
             });
