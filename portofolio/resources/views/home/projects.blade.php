@@ -138,137 +138,42 @@
     </header>
 
     <main class="projects-container">
-        <div class="grid-layout">
+      <div class="grid-layout">
+    @foreach($data as $project)
+        <div class="project-card reveal">
+            <div class="image-box">
+                @if($project->thumbnail)
+                    <img src="{{ asset('storage/' . $project->thumbnail) }}" alt="{{ $project->title }}">
+                @else
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" alt="Placeholder">
+                @endif
+            </div>
+            <div class="content-box">
+                <span class="year">{{ $project->year }} / {{ strtoupper($project->type) }}</span>
+                <h3>{{ $project->title }}</h3>
+                <p>{{ $project->description }}</p>
 
-            <div class="project-card reveal">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800" alt="Dashboard">
+                <div class="tech-stack">
+                    @if($project->tools)
+                        @foreach(explode(',', $project->tools) as $tool)
+                            <span class="tech-item">#{{ trim($tool) }}</span>
+                        @endforeach
+                    @endif
                 </div>
-                <div class="content-box">
-                    <span class="year">2026 / FINTECH</span>
-                    <h3>SaaS Analytics Dashboard</h3>
-                    <p>Visualisasi data real-time untuk performa penjualan UMKM dengan integrasi AI forecasting.</p>
-                    <div class="tech-stack">
-                        <span class="tech-item">#React</span>
-                        <span class="tech-item">#Chart.js</span>
-                        <span class="tech-item">#Firebase</span>
-                    </div>
+
+                {{-- Tombol Link Optional --}}
+                <div style="margin-top: 20px; display: flex; gap: 15px;">
+                    @if($project->github)
+                        <a href="{{ $project->github }}" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 0.8rem;"><i class="fab fa-github"></i> GitHub</a>
+                    @endif
+                    @if($project->link)
+                        <a href="{{ $project->link }}" target="_blank" style="color: var(--accent); text-decoration: none; font-size: 0.8rem;"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                    @endif
                 </div>
             </div>
-
-            <div class="project-card reveal">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1558346490-a72e53ae2d4f?q=80&w=800" alt="IoT">
-                </div>
-                <div class="content-box">
-                    <span class="year">2025 / AGRICULTURE</span>
-                    <h3>Smart Farming Kit</h3>
-                    <p>Otomasi penyiraman dan pemupukan berbasis kelembapan tanah melalui aplikasi mobile.</p>
-                    <div class="tech-stack">
-                        <span class="tech-item">#ESP32</span>
-                        <span class="tech-item">#MQTT</span>
-                        <span class="tech-item">#Flutter</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card reveal">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=800" alt="Messaging">
-                </div>
-                <div class="content-box">
-                    <span class="year">2025 / SECURITY</span>
-                    <h3>Enigma Messenger</h3>
-                    <p>Aplikasi chatting dengan End-to-End Encryption menggunakan protokol Signal.</p>
-                    <div class="tech-stack">
-                        <span class="tech-item">#Socket.io</span>
-                        <span class="tech-item">#NodeJS</span>
-                        <span class="tech-item">#WebCrypto</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card reveal">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1557821552-17105176677c?q=80&w=800" alt="Ecommerce">
-                </div>
-                <div class="content-box">
-                    <span class="year">2024 / E-COMMERCE</span>
-                    <h3>Local Brand Marketplace</h3>
-                    <p>Platform jual beli khusus brand lokal Madura dengan sistem payment gateway otomatis.</p>
-                    <div class="tech-stack">
-                        <span class="tech-item">#Laravel</span>
-                        <span class="tech-item">#Midtrans</span>
-                        <span class="tech-item">#MySQL</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card reveal">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1540350394557-8d14678e7f91?q=80&w=800" alt="Hospital">
-                </div>
-                <div class="content-box">
-                    <span class="year">2024 / HEALTH</span>
-                    <h3>E-Health Care Bangkalan</h3>
-                    <p>Sistem antrean online dan rekam medis digital untuk puskesmas daerah.</p>
-                    <div class="tech-stack">
-                        <span class="tech-item">#PHP</span>
-                        <span class="tech-item">#Bootstrap</span>
-                        <span class="tech-item">#PostgreSQL</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card reveal">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?q=80&w=800" alt="Crypto">
-                </div>
-                <div class="content-box">
-                    <span class="year">2024 / BLOCKCHAIN</span>
-                    <h3>NFT Portfolio Tracker</h3>
-                    <p>Dashboard untuk melacak aset digital lintas berbagai wallet dalam satu layar.</p>
-                    <div class="tech-stack">
-                        <span class="tech-item">#Next.js</span>
-                        <span class="tech-item">#Ethers.js</span>
-                        <span class="tech-item">#Tailwind</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card reveal">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1510915361894-db8b60106cb1?q=80&w=800" alt="Code">
-                </div>
-                <div class="content-box">
-                    <span class="year">2023 / UTILITY</span>
-                    <h3>Cloud Code Editor</h3>
-                    <p>Editor kode berbasis web yang memungkinkan kolaborasi real-time seperti VS Code.</p>
-                    <div class="tech-stack">
-                        <span class="tech-item">#VueJS</span>
-                        <span class="tech-item">#MonacoEditor</span>
-                        <span class="tech-item">#Redis</span>
-                    </div>
-                </div>
-            </div>
-
-            <div class="project-card reveal">
-                <div class="image-box">
-                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800" alt="Network">
-                </div>
-                <div class="content-box">
-                    <span class="year">2023 / CYBER</span>
-                    <h3>Vulnerability Scanner</h3>
-                    <p>Tool sederhana untuk melakukan scanning celah keamanan dasar pada website.</p>
-                    <div class="tech-stack">
-                        <span class="tech-item">#Python</span>
-                        <span class="tech-item">#Go</span>
-                        <span class="tech-item">#Shell</span>
-                    </div>
-                </div>
-            </div>
-
         </div>
+    @endforeach
+</div>
     </main>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>

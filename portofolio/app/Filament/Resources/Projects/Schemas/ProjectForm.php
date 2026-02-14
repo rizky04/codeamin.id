@@ -26,6 +26,7 @@ class ProjectForm
                  FileUpload::make('thumbnail')
                     ->image() // Memastikan yang diupload adalah gambar
                     ->directory('projects-thumbnails')
+                    ->disk('public') // <--- WAJIB ADA
                     ->columnSpanFull(),
                 Textarea::make('description')
                     ->columnSpanFull(),
@@ -34,6 +35,7 @@ class ProjectForm
                     ->reorderable() // Opsional: supaya urutan gambar bisa digeser-geser
                     ->image() // Memastikan yang diupload adalah gambar
                     ->directory('projects-images')
+                    ->disk('public') // <--- WAJIB ADA
                     ->columnSpanFull(),
             ]);
     }
