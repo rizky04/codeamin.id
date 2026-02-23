@@ -278,11 +278,11 @@
             <a href="mailto:admin@codeamin.id" class="email-link reveal">admin@codeamin.id</a>
 
             <div class="social-icons reveal" style="margin-top: 50px;">
-                <a href="https://instagram.com/codeamin" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://tiktok.com/@codeamin" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://threads.net/@codeamin" title="Threads"><i class="fa-brands fa-threads"></i></a>
-                <a href="https://wa.me/628123456789" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
-                <a href="https://linkedin.com/in/codeamin" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://www.instagram.com/masamin.id/" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@masamin.id" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://www.threads.com/@masamin.id" title="Threads"><i class="fa-brands fa-threads"></i></a>
+                <a href="https://wa.me/6283119482925" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/muhammad-rizky-amin-36aab0183/" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
             </div>
 
             <div class="footer-bottom">
